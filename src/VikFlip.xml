@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<widget id="vikflip.applebooksflipbook.VikFlip" pluginWidget="true" needsEntityContext="true" supportedPlatform="Web" xmlns="http://www.mendix.com/widget/1.0/">
+    <name>VikFlip</name>
+    <description>Apple Books inspired realistic 3D flipbook widget for high-resolution annual reports, policy magazines, and digital documents with procedural audio and minimalist chrome.</description>
+    <icon/>
+    <properties>
+        <propertyGroup caption="Data Source">
+            <property key="pages" type="datasource" isList="true" required="false">
+                <caption>Pages Data Source</caption>
+                <description>Entity list representing the pages of the document (e.g. System.Image or custom PageEntity).</description>
+            </property>
+            <property key="pageImage" type="attribute" dataSource="pages" required="false">
+                <caption>Page Image / URL</caption>
+                <description>Attribute containing either the image file stream or an absolute/relative image URL.</description>
+                <attributeTypes>
+                    <attributeType name="String"/>
+                    <attributeType name="Binary"/>
+                </attributeTypes>
+            </property>
+            <property key="pageNumber" type="attribute" dataSource="pages" required="false">
+                <caption>Page Number</caption>
+                <description>Integer attribute specifying the sequential page number or folio.</description>
+                <attributeTypes>
+                    <attributeType name="Integer"/>
+                </attributeTypes>
+            </property>
+            <property key="chapterTitle" type="attribute" dataSource="pages" required="false">
+                <caption>Chapter Title</caption>
+                <description>Optional chapter title or section header for this page.</description>
+                <attributeTypes>
+                    <attributeType name="String"/>
+                </attributeTypes>
+            </property>
+            <property key="pageDensity" type="attribute" dataSource="pages" required="false">
+                <caption>Page Density</caption>
+                <description>Optional attribute specifying whether the page is 'hard' (hardcover) or 'soft' (editorial paper).</description>
+                <attributeTypes>
+                    <attributeType name="String"/>
+                    <attributeType name="Enum"/>
+                </attributeTypes>
+            </property>
+        </propertyGroup>
+
+        <propertyGroup caption="Appearance &amp; Themes">
+            <property key="initialTheme" type="enumeration" defaultValue="sepia">
+                <caption>Initial Reading Theme</caption>
+                <description>Default visual theme on load.</description>
+                <enumerationValues>
+                    <enumerationValue key="sepia">Sepia (Apple Books Warm Paper)</enumerationValue>
+                    <enumerationValue key="light">Light (Clean Milk White)</enumerationValue>
+                    <enumerationValue key="dark">Dark (Deep Charcoal Matte)</enumerationValue>
+                </enumerationValues>
+            </property>
+            <property key="initialMode" type="enumeration" defaultValue="horizontal">
+                <caption>Initial Reading Mode</caption>
+                <description>Default reading orientation (3D page turn or continuous vertical scroll).</description>
+                <enumerationValues>
+                    <enumerationValue key="horizontal">Horizontal (3D Page Flip)</enumerationValue>
+                    <enumerationValue key="vertical">Vertical (Continuous Scroll Flow)</enumerationValue>
+                </enumerationValues>
+            </property>
+            <property key="autoHideToolbar" type="boolean" defaultValue="true">
+                <caption>Auto-hide Chrome</caption>
+                <description>Whether floating toolbars fade out automatically during quiet reading and reappear on soft tap.</description>
+            </property>
+            <property key="showThumbnailDrawer" type="boolean" defaultValue="true">
+                <caption>Enable Thumbnail Navigator</caption>
+                <description>Show bottom mini-preview thumbnail drawer button.</description>
+            </property>
+        </propertyGroup>
+
+        <propertyGroup caption="Audio Synthesis">
+            <property key="soundEnabled" type="boolean" defaultValue="true">
+                <caption>Enable Ambient Audio FX</caption>
+                <description>Whether paper rustle sounds synthesize automatically on page turn via Web Audio API.</description>
+            </property>
+        </propertyGroup>
+
+        <propertyGroup caption="Events">
+            <property key="onPageChange" type="action" required="false">
+                <caption>On Page Change</caption>
+                <description>Nanoflow or Microflow triggered when the reader turns to a new page.</description>
+            </property>
+            <property key="onAttachmentClick" type="action" required="false">
+                <caption>On Attachment Click</caption>
+                <description>Nanoflow or Microflow triggered when a user clicks a document attachment.</description>
+            </property>
+        </propertyGroup>
+    </properties>
+</widget>
