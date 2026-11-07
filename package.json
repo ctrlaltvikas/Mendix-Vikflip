@@ -7,6 +7,9 @@
     "dev": "vite",
     "build": "vite build",
     "build:widget": "vite build --config vite.config.widget.ts",
+    "build:preview": "vite build --config vite.config.preview.ts",
+    "generate:icons": "node scripts/generate-icons.js",
+    "generate:screenshots": "node scripts/generate-screenshots.js",
     "package:mpk": "node scripts/package-mpk.js",
     "preview": "vite preview"
   },

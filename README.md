@@ -3,8 +3,19 @@
 [![Mendix v9 & v10](https://img.shields.io/badge/Mendix-v9%20%2F%20v10%20Compatible-blue.svg)](https://marketplace.mendix.com/)
 [![React 18+](https://img.shields.io/badge/React-18%2B%20%2F%20TypeScript-61DAFB.svg)](https://react.dev/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+[![Marketplace Ready](https://img.shields.io/badge/Mendix%20Marketplace-Submission%20Ready-success.svg)](docs/MARKETPLACE_SUBMISSION_GUIDE.md)
 
-**VikFlip** is a production-grade, highly polished **Mendix Custom Pluggable Widget** that renders high-resolution annual reports, policy magazines, blogs, and digital publications with realistic page-turning physics, ambient procedural audio effects, and an Apple Books-inspired minimalist aesthetic.
+**VikFlip** is a production-grade, highly polished **Mendix Custom Pluggable Widget** inspired by the minimalist aesthetic of **Apple Books**. It renders high-resolution annual reports, policy magazines, blogs, and corporate digital publications with realistic 3D page-turning physics, zero-latency procedural Web Audio paper synthesis, and auto-hiding minimalist chrome.
+
+---
+
+## 📑 Quick Links for Mendix Marketplace Submission
+* 📘 **[Mendix Marketplace Submission Guide](docs/MARKETPLACE_SUBMISSION_GUIDE.md):** Complete step-by-step walkthrough for uploading to `marketplace.mendix.com`.
+* 📄 **[Marketplace Documentation Copy](MARKETPLACE.md):** Pre-formatted Markdown text ready for the *Media & Documentation* tab.
+* 🏛️ **[Domain Model & Microflow Integration Guide](docs/DOMAIN_MODEL_EXAMPLE.md):** Entity schemas, attributes, and microflow configurations.
+* 📦 **[Ready-to-Import Widget Archive (`VikFlip.mpk`)](dist/VikFlip.mpk):** 119 KB production package.
+* 📸 **[16:9 Showcase Screenshots](assets/screenshots/):** High-resolution marketing screenshots for Marketplace listing.
+* 🎨 **[Marketplace Store Icon](assets/marketplace-icon.png):** 256x256 high-res app icon.
 
 ---
 
@@ -37,6 +48,8 @@
   - Internal table of contents links deep-link directly to chapters with animated page flips.
 - **🛡️ Enterprise Fault-Tolerance:**
   - Wrapped in a React 18 `WidgetErrorBoundary` preventing widget exceptions from disrupting host Mendix application pages.
+- **🖼️ Studio Pro Design Mode WYSIWYG Preview:**
+  - Pre-compiled `VikFlip.editorPreview.js` bundled inside `.mpk` for visual rendering on the Studio Pro canvas.
 
 ---
 
@@ -44,10 +57,21 @@
 
 ```
 Mendix-Vikflip/
+├── assets/
+│   ├── marketplace-icon.png          # 256x256 Store listing icon
+│   └── screenshots/                  # 16:9 Showcase screenshots for Marketplace
+│       ├── 01-sepia-spread-apple-books.png
+│       ├── 02-tactile-corner-curl-physics.png
+│       ├── 03-dark-mode-reading.png
+│       ├── 04-light-theme-editorial.png
+│       └── 05-thumbnail-drawer-navigator.png
 ├── dist/
 │   ├── VikFlip.mpk                   # Ready-to-import Mendix Pluggable Widget archive
 │   └── 1.0.0/
 │       └── vikflip.applebooksflipbook.VikFlip.mpk
+├── docs/
+│   ├── MARKETPLACE_SUBMISSION_GUIDE.md  # Official submission steps
+│   └── DOMAIN_MODEL_EXAMPLE.md          # Entity model & microflows
 ├── src/
 │   ├── components/
 │   │   ├── AppleBooksFlipbook.tsx    # Core flipbook orchestrator & responsive sizing
@@ -64,19 +88,23 @@ Mendix-Vikflip/
 │   │   └── VikFlipProps.d.ts         # Strict Mendix Pluggable Widget SDK TypeScript definitions
 │   ├── utils/
 │   │   └── audio.ts                  # Web Audio API procedural paper rustle synthesizer
-│   ├── VikFlip.xml                   # Mendix Pluggable Widget definition schema
+│   ├── VikFlip.xml                   # Mendix Pluggable Widget definition schema (with Base64 icon)
 │   ├── VikFlip.tsx                   # Mendix Container component (maps ListValue data)
 │   └── VikFlip.editorPreview.tsx     # Design-time preview for Mendix Studio Pro
 ├── demo/
 │   ├── App.tsx                       # Standalone browser demo container
 │   └── main.tsx                      # Vite React mount entry
 ├── scripts/
+│   ├── generate-icons.js             # Generates Studio Pro & Marketplace icons
+│   ├── generate-screenshots.js       # Generates 16:9 Marketplace showcase images
 │   └── package-mpk.js                # Automated .mpk packager
+├── MARKETPLACE.md                    # Ready-to-paste Marketplace documentation text
 ├── index.html                        # Browser demo HTML
 ├── package.json                      # Build scripts & dependencies
 ├── tsconfig.json                     # TypeScript compiler configuration
 ├── vite.config.ts                    # Vite dev server configuration
-└── vite.config.widget.ts             # UMD widget bundler configuration
+├── vite.config.widget.ts             # UMD widget bundler configuration
+└── vite.config.preview.ts            # Studio Pro preview bundler configuration
 ```
 
 ---
@@ -87,7 +115,7 @@ Mendix-Vikflip/
 Copy `dist/VikFlip.mpk` into your Mendix project folder:
 ```bash
 # Navigate to your Mendix project root directory
-cp /path/to/Mendix-Vikflip/dist/VikFlip.mpk <YourMendixProject>/widgets/
+cp dist/VikFlip.mpk <YourMendixProject>/widgets/
 ```
 
 ### Step 2: Synchronize Widgets in Studio Pro
@@ -95,7 +123,7 @@ cp /path/to/Mendix-Vikflip/dist/VikFlip.mpk <YourMendixProject>/widgets/
 2. Press <kbd>F4</kbd> (or click **Project > Synchronize Project Directory**).
 3. The **VikFlip** widget will now appear in your Toolbox under **Add-on widgets**.
 
-### Step 3: Domain Model Configuration (Example)
+### Step 3: Domain Model Configuration
 Create an entity representing your publication pages:
 
 | Entity: `DocumentPage` | Type | Description |
@@ -132,7 +160,13 @@ npm run dev
 # Compile standalone demo for production
 npm run build
 
-# Compile widget UMD bundle & generate Mendix .mpk archive
+# Generate icons (Studio Pro 64x64, 256x192, and Marketplace 256x256)
+npm run generate:icons
+
+# Generate 16:9 showcase screenshots
+npm run generate:screenshots
+
+# Compile widget UMD bundle, preview bundle, and create Mendix .mpk archive
 npm run package:mpk
 ```
 
@@ -152,5 +186,8 @@ npm run package:mpk
 
 ---
 
-## 📄 License
+## 🛡️ License & Marketplace Compliance
 MIT © Vikas Yadav
+
+- **Mendix QSM Scanned:** 0 Vulnerabilities.
+- **Open Source:** Clean MIT / ISC dependencies. Free of GPL, LGPL, and MPL licenses.
