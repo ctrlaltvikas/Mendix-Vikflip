@@ -12,8 +12,8 @@ Before accessing the Mendix Marketplace portal, ensure the following deliverable
 - [x] **Studio Pro Support:** Supports Mendix 9.24+ (LTS) and Mendix 10.0+ (LTS/MTS).
 - [x] **License Scan Compliance:** MIT License (100% free of prohibited GPL, LGPL, and MPL licenses; passes Mendix QSM scan).
 - [x] **Vulnerability Status:** Zero known third-party security vulnerabilities (`npm audit` clean).
-- [x] **Store Icon:** High-resolution 256x256 PNG located at `assets/marketplace-icon.png`.
-- [x] **16:9 Showcase Screenshots:** 5 high-resolution 1280x720 PNG screenshots located in `assets/screenshots/`.
+- [x] **Store Icon / Thumbnail Image:** High-resolution 256x256 PNG located at `assets/thumbnail.png` (and `assets/marketplace-icon.png`).
+- [x] **Screenshots (4 Images, 600x420 px):** Exactly 4 screenshots matching Mendix Marketplace dimensions located in `assets/screenshots/`.
 - [x] **Toolbox Icons:** Embedded Base64 icon in `VikFlip.xml`, plus 64x64 and 256x192 PNGs packaged in the `.mpk`.
 - [x] **Design-Time WYSIWYG Preview:** `VikFlip.editorPreview.js` compiled and bundled.
 - [x] **GitHub Repository:** Public repository clean with `.gitignore`, `README.md`, and `LICENSE`.
@@ -76,17 +76,16 @@ Fill in the product details as follows:
 
 ### Step 4: Tab 3 — Media & Documentation
 
-#### 1. Component Icon:
-* Click **Upload Icon**.
-* Upload: **`assets/marketplace-icon.png`** (256x256 high-resolution icon).
+#### 1. Component Icon / Thumbnail:
+* Click **Upload Icon** (or Thumbnail).
+* Upload: **`assets/thumbnail.png`** (or `assets/marketplace-icon.png` — 256x256 high-resolution icon).
 
-#### 2. Screenshots (16:9 Aspect Ratio):
-Upload the screenshots located in **`assets/screenshots/`** in the following order:
-1. `01-sepia-spread-apple-books.png` — *Signature Apple Books warm paper two-page spread with executive address.*
-2. `02-tactile-corner-curl-physics.png` — *Tactile corner curl physics showing 3D lighting, drop shadows, and attachment card.*
-3. `03-dark-mode-reading.png` — *Onyx dark mode reading experience with floating glass controls.*
-4. `04-light-theme-editorial.png` — *Clean milk-white editorial magazine spread.*
-5. `05-thumbnail-drawer-navigator.png` — *Slide-up bottom filmstrip thumbnail navigator with active folio glowing capsule.*
+#### 2. Screenshots (4 Images, 600x420 px):
+Upload the 4 screenshots located in **`assets/screenshots/`** in order:
+1. `screenshot-1-sepia-two-page-spread.png` (600x420 px) — *Signature Apple Books warm paper two-page spread with executive address and metrics.*
+2. `screenshot-2-tactile-3d-page-curl.png` (600x420 px) — *Tactile corner curl physics showing 3D lighting, drop shadows, and attachment card.*
+3. `screenshot-3-dark-mode-reading.png` (600x420 px) — *Onyx dark mode reading experience with floating glass controls.*
+4. `screenshot-4-thumbnail-drawer-navigator.png` (600x420 px) — *Slide-up bottom filmstrip thumbnail navigator with active folio glowing capsule.*
 
 #### 3. Documentation Body:
 * Open **[`MARKETPLACE.md`](file:///Users/vikasyadav/Documents/GitHub/Mendix-Vikflip/MARKETPLACE.md)**.

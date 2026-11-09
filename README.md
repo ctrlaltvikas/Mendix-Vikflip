@@ -14,8 +14,8 @@
 * 📄 **[Marketplace Documentation Copy](MARKETPLACE.md):** Pre-formatted Markdown text ready for the *Media & Documentation* tab.
 * 🏛️ **[Domain Model & Microflow Integration Guide](docs/DOMAIN_MODEL_EXAMPLE.md):** Entity schemas, attributes, and microflow configurations.
 * 📦 **[Ready-to-Import Widget Archive (`VikFlip.mpk`)](dist/VikFlip.mpk):** 119 KB production package.
-* 📸 **[16:9 Showcase Screenshots](assets/screenshots/):** High-resolution marketing screenshots for Marketplace listing.
-* 🎨 **[Marketplace Store Icon](assets/marketplace-icon.png):** 256x256 high-res app icon.
+* 📸 **[Screenshots (4 Images, 600x420 px)](assets/screenshots/):** Mendix Marketplace screenshots.
+* 🎨 **[Marketplace Thumbnail & Store Icon](assets/thumbnail.png):** 256x256 high-res app icon.
 
 ---
 
@@ -59,12 +59,12 @@
 Mendix-Vikflip/
 ├── assets/
 │   ├── marketplace-icon.png          # 256x256 Store listing icon
-│   └── screenshots/                  # 16:9 Showcase screenshots for Marketplace
-│       ├── 01-sepia-spread-apple-books.png
-│       ├── 02-tactile-corner-curl-physics.png
-│       ├── 03-dark-mode-reading.png
-│       ├── 04-light-theme-editorial.png
-│       └── 05-thumbnail-drawer-navigator.png
+│   ├── thumbnail.png                 # 256x256 Marketplace thumbnail image
+│   └── screenshots/                  # 4 Screenshots (600x420 px) for Marketplace
+│       ├── screenshot-1-sepia-two-page-spread.png
+│       ├── screenshot-2-tactile-3d-page-curl.png
+│       ├── screenshot-3-dark-mode-reading.png
+│       └── screenshot-4-thumbnail-drawer-navigator.png
 ├── dist/
 │   ├── VikFlip.mpk                   # Ready-to-import Mendix Pluggable Widget archive
 │   └── 1.0.0/

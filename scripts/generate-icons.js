@@ -239,9 +239,10 @@ fs.writeFileSync(path.join(srcAssetsDir, 'VikFlip.tile.dark.png'), tileDarkPng);
 fs.writeFileSync(path.join(rootDir, 'src', 'VikFlip.tile.png'), tilePng);
 fs.writeFileSync(path.join(rootDir, 'src', 'VikFlip.tile.dark.png'), tileDarkPng);
 
-// 3. Marketplace 256x256 High-Resolution Store Icon
+// 3. Marketplace 256x256 High-Resolution Store Icon & Thumbnail Image
 const marketplaceIcon = generateBookIcon(256, 256, false);
 fs.writeFileSync(path.join(assetsDir, 'marketplace-icon.png'), marketplaceIcon);
+fs.writeFileSync(path.join(assetsDir, 'thumbnail.png'), marketplaceIcon);
 
 // 4. Update VikFlip.xml with Base64 icon
 const base64Icon = iconPng.toString('base64');
