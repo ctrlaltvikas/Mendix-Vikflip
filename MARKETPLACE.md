@@ -1,172 +1,80 @@
-# VikFlip — Realistic Apple Books 3D Flipbook Pluggable Widget
+# VikFlip — Apple Books 3D Flipbook & Interactive Reader
 
-> **Category:** Add-ons / UI & Styling / Widgets  
-> **Supported Mendix Versions:** Mendix 9.24.0+ (LTS), Mendix 10.0.0+ (LTS/MTS)  
-> **Supported Platforms:** Web, Mobile Web, Progressive Web App (PWA)  
-> **License:** MIT (100% Open Source — Free of Prohibited GPL/LGPL/MPL Licenses, 0 Vulnerabilities)  
+## Typical usage scenario
 
----
+VikFlip is an enterprise-grade Mendix Pluggable Widget inspired by the minimalist aesthetic and craftsmanship of Apple Books. It elevates flat, static corporate documents, multi-page PDFs, and web scroll views into an interactive, high-resolution reading showcase with realistic page-turning physics, real-time procedural audio synthesis, and an auto-hiding glassmorphic interface.
 
-## 1. Description / Overview
-
-**VikFlip** is a production-grade, highly polished **Mendix Custom Pluggable Widget** inspired by the timeless minimalist craftsmanship of **Apple Books**. It transforms traditional flat PDF downloads and static scroll containers into an interactive, high-resolution reading showcase with realistic page-turning physics, real-time procedural audio synthesis, and an auto-hiding glassmorphic user interface.
-
-Whether delivering Fortune 500 annual shareholder reports, ESG sustainability filings, policy whitepapers, corporate magazines, or interactive blogs, VikFlip restores gravitas, intimacy, and visceral delight to digital reading on desktop, tablet, and mobile browsers.
+### Primary Use Cases:
+1. **Executive & Investor Relations:** Delivering high-stakes annual shareholder reports, audited financial disclosures, and strategic overviews with authentic hardcover binding and tactile page curls.
+2. **ESG & Sustainability Publications:** Converting multi-million page corporate print runs into zero-emission, immersive digital publications that board members and stakeholders actively prefer over physical printed books.
+3. **Policy Magazines & Technical Whitepapers:** Showcasing regulatory briefs, research papers, and corporate circulars with asymmetric print-grade margins and verified document attachments.
+4. **Luxury Product Lookbooks & Catalogs:** Displaying high-resolution commercial catalogs and marketing portfolios at silky-smooth 60–120Hz refresh rates.
+5. **Interactive Corporate Portals & Knowledge Bases:** Coupling in-book deep links (jump to chapter) and downloadable document attachments (PDFs, XLSX models) with built-in protection against accidental page turns.
 
 ---
 
-## 2. Typical Usage Scenarios
+## Features and limitations
 
-1. **Annual Reports & Investor Relations:**
-   Present multi-page financial statements, executive addresses, and audited charts with authentic hardcover binding and page-turning tactile response.
-2. **ESG & Sustainability Publications:**
-   Transform multi-million-page corporate paper print runs into zero-emission, immersive digital publications that board members and stakeholders actively prefer over physical printed books.
-3. **Policy Magazines, Circulars & Whitepapers:**
-   Publish corporate magazines, technical patents, and compliance manuals with asymmetric spine-gutter margins, traditional folio pagination, and embedded attachments.
-4. **Digital Lookbooks & Luxury Product Catalogs:**
-   Display high-resolution marketing spreads with smooth corner dragging, spring-back kinematics, and zero visual stutter at 60–120Hz ProMotion refresh rates.
-5. **Interactive Corporate Blogs & Newsletters:**
-   Couple in-book deep links (jump to chapter) and downloadable document attachments (PDFs, XLSX models, contracts) with built-in protection against accidental page turns.
-
----
-
-## 3. Features & Limitations
-
-### ✨ Key Features:
+### Key Features:
 * **Tactile 3D Page Physics:**
-  - Dynamic corner dragging with cloth-mesh Euler resistance and real-time shadow penetration.
-  - Realistic spring-back kinematics when released prior to the halfway threshold (simulating 120gsm bond paper damping).
-  - Hardcover density distinction: front and back covers behave as rigid hardcovers (`data-density="hard"`), while interior pages flex as soft editorial stock.
+  - Realistic corner dragging with dynamic resistance, Euler angle cloth mesh deformation, contact drop shadows, and authentic spring-back kinematics.
   - Asymmetric print-grade margins: extra 44px breathing room along the spine fold so text and metrics never dive into the center gutter.
-  - Traditional folio alignment: even pages show folios at bottom-left; odd pages show folios at bottom-right.
+  - Traditional folio pagination: even folios outer-left, odd folios outer-right.
+* **Ambient Procedural Audio:**
+  - Zero-latency Web Audio API synthesis generating natural paper-turning rustle and air displacement on every turn (with a clean toolbar mute toggle).
+  - No external audio file downloads or bandwidth overhead.
+* **Minimalist Apple Books Chrome:**
+  - Floating iOS-style glassmorphic toolbars (`backdrop-filter: blur(24px) saturate(180%)`) that auto-hide during reading and gently reappear on mouse movement or soft center tap.
+  - Live page scrubber with drag tracking.
 * **Dual Reading Modes:**
-  - **Horizontal 3D Flip (`Columns2`):** Classic two-page spread with corner curls. Automatically transitions to responsive single-page mode on mobile screens (`< 768px`).
-  - **Vertical Continuous Scroll (`Rows3`):** Smooth vertical flow with centered page cards and intersection observer tracking.
-  - Keyboard shortcut <kbd>V</kbd> for instant mode toggling.
-* **Zero-Latency Procedural Audio Synthesis:**
-  - Embedded Web Audio API dual-filtered noise synthesizer generating authentic paper-turning rustle and air displacement whoosh on page turns.
-  - $\pm 10\%$ procedural pitch and timing variation ensures no two flips sound robotic.
-  - Clean mute toggle in toolbar and keyboard shortcut <kbd>M</kbd>. Zero external audio file download dependencies.
-* **Minimalist Apple Books Glass Chrome:**
-  - Floating top and bottom toolbars with iOS-style glassmorphism (`backdrop-filter: blur(24px) saturate(180%)`).
-  - Auto-hides after 4 seconds of quiet reading; gently reappears on subtle mouse movement or center-screen tap.
-  - Reading Themes: **Light** (clean milk white), **Sepia** (signature Apple Books warm paper `#FBF0D9` with rich espresso typography `#3D2E1E`), and **Dark** (deep charcoal matte). Press <kbd>T</kbd> to cycle.
-* **Bottom Drawer Filmstrip Navigator:**
-  - Slide-up miniature preview strip displaying all document folios with an active glowing capsule indicator. Press <kbd>D</kbd> to toggle.
-* **Blog Links & Attachment Integration:**
-  - Interactive attachment cards open a glass dialog displaying file metadata, security verification badges, and direct file download actions.
-  - `disableFlipByClick: true` ensures clicking links, opening attachments, or selecting text never causes accidental page flips.
-* **Enterprise Fault-Tolerance:**
-  - Native React 18 `WidgetErrorBoundary` preventing widget rendering errors from disrupting host Mendix application pages.
+  - Seamlessly switch between Horizontal 3D Page Flip (two-page spread on desktop, adaptive portrait on mobile) and Vertical Continuous Scroll flow (press 'V').
+* **Reading Themes:**
+  - Instant toggle between Light (crisp milk white), Sepia (signature Apple Books warm paper #FBF0D9), and Dark (deep charcoal matte) reading modes (press 'T').
+* **Bottom Drawer Navigator:**
+  - Slide-up miniature preview filmstrip displaying all document folios with an active glowing capsule indicator (press 'D').
+* **Interactive Blog Links & Attachments:**
+  - Safe-click external links, table of contents jumps, and verified document attachment previews (PDF, XLSX) with zero risk of accidental page turns (`disableFlipByClick: true`).
+* **Mendix React Client Ready:**
+  - 100% pure React 18, zero legacy Dojo dependencies, future-proof for Mendix 10, 11, and 12.
 
-### ⚠️ Limitations:
-* Requires modern web browser with HTML5 Canvas and Web Audio API support (supported across 99%+ of modern browsers: Chrome, Safari, Edge, Firefox, iOS WebKit, Android Chrome).
-* Sound synthesis requires initial user interaction (click/tap) before audio can play due to modern browser autoplay policies.
+### Limitations:
+* Requires a modern web browser supporting HTML5 Canvas and Web Audio API (Chrome, Safari, Edge, Firefox, iOS Safari, Android Chrome).
+* Web Audio procedural rustle requires an initial user interaction (click or tap) due to browser autoplay security policies.
 
 ---
 
-## 4. Dependencies & Prerequisites
+## Dependencies
 
-* **Mendix Studio Pro:**
-  - Mendix 9: `v9.24.0` or higher
-  - Mendix 10: `v10.0.0` or higher (tested up to 10.21+)
-* **Atlas UI:**
-  - Compatible with Atlas Core 3.x and custom corporate theme modules.
-* **External Modules:**
-  - No external Marketplace module dependencies required. Self-contained widget package (`.mpk`).
-* **License & Security Compliance:**
-  - 100% MIT Licensed runtime code.
-  - 0 known security vulnerabilities (passes automated Mendix QSM scan).
-  - Prohibited licenses (GPL, LGPL, MPL) are completely excluded.
+* **Mendix Studio Pro:** v9.24.0 or higher / v10.0.0 or higher (tested on LTS releases).
+* **Atlas UI:** Fully compatible with Atlas Core 3.x and custom corporate theme modules.
+* **External Modules:** None. Self-contained widget package (`.mpk`) with 0 external runtime network dependencies and 0 security vulnerabilities.
 
 ---
 
-## 5. Installation Guide
+## Installation
 
-### Via Mendix Marketplace:
-1. In Mendix Studio Pro, open the **Marketplace** tab.
-2. Search for **VikFlip** and click **Download**.
-3. Studio Pro will automatically import the widget into your project's `widgets/` folder.
-
-### Manual Installation via `.mpk`:
-1. Download `VikFlip.mpk` from the releases.
-2. Copy `VikFlip.mpk` into your Mendix project root under `<ProjectDirectory>/widgets/`.
-3. In Studio Pro, press <kbd>F4</kbd> (or select **Project > Synchronize Project Directory**).
-4. The widget will now appear in your Toolbox under **Add-on widgets**.
+1. In Mendix Studio Pro, download **VikFlip** from the Mendix Marketplace (or copy `VikFlip.mpk` into your project's `widgets/` folder).
+2. Press **F4** (Synchronize Project Directory).
+3. Drag the **VikFlip** widget from your Toolbox onto any page inside a Data View containing your publication entity.
+4. Set the **Pages Data Source** to retrieve child pages (sorted by Page Number ascending).
+5. Map attributes for `Page Number`, `Chapter Title`, and `Initial Theme` (Light, Sepia, or Dark).
+6. Run your project locally or deploy to Mendix Cloud.
 
 ---
 
-## 6. Configuration & Property Reference
+## Configuration & Property Reference
 
-Place the **VikFlip** widget inside a Data View or page with context:
-
-### Properties:
-
-| Category | Property | Type | Description |
+| Property | Type | Default | Description |
 | :--- | :--- | :--- | :--- |
-| **Data Source** | `pages` | Data Source (List) | Entity list representing the document pages (e.g. `DocumentPage`). |
-| | `pageImage` | Attribute (String / Binary) | Attribute containing either the image file stream or absolute image URL. |
-| | `pageNumber` | Attribute (Integer) | Integer attribute specifying sequential page number or folio. |
-| | `chapterTitle` | Attribute (String) | Chapter title or section header for this folio. |
-| | `pageDensity` | Attribute (String / Enum) | Specifying whether the page is `'hard'` (cover) or `'soft'` (editorial paper). |
-| **Appearance** | `initialTheme` | Enumeration | Initial visual theme: `Sepia` (Warm Paper), `Light`, or `Dark`. |
-| | `initialMode` | Enumeration | Initial reading mode: `Horizontal (3D Page Flip)` or `Vertical (Scroll Flow)`. |
-| | `autoHideToolbar` | Boolean | Whether floating glass toolbars fade out automatically during quiet reading. |
-| | `showThumbnailDrawer` | Boolean | Enable/disable the bottom thumbnail filmstrip navigator button. |
-| **Audio Synthesis** | `soundEnabled` | Boolean | Enable/disable procedural Web Audio paper-turning sound effect. |
-| **Events** | `onPageChange` | Action | Nanoflow/Microflow triggered when the reader flips to a new page. |
-| | `onAttachmentClick` | Action | Nanoflow/Microflow triggered when a document attachment is clicked. |
-
----
-
-## 7. Domain Model Best Practice
-
-Recommended entity structure:
-
-```mermaid
-erDiagram
-    PUBLICATION ||--o{ DOCUMENT_PAGE : contains
-    DOCUMENT_PAGE ||--o{ DOCUMENT_ATTACHMENT : has
-
-    PUBLICATION {
-        string Title
-        string Edition
-        integer TotalPages
-    }
-
-    DOCUMENT_PAGE {
-        integer PageNumber
-        string ChapterTitle
-        string PageDensity
-        string ImageUrl
-        binary PageImage
-    }
-
-    DOCUMENT_ATTACHMENT {
-        string AttachmentName
-        string FileSize
-        string FileType
-        string DownloadUrl
-    }
-```
-
----
-
-## 8. Frequently Asked Questions (FAQ)
-
-**Q: Does VikFlip download external MP3 or WAV files for audio?**  
-*A: No. VikFlip utilizes the native HTML5 Web Audio API to procedurally synthesize paper friction acoustics, dual bandpass filtering, and low-frequency air displacement in real time. This means zero network bandwidth and instant sound with zero latency.*
-
-**Q: How does the widget handle small mobile screens?**  
-*A: On screens smaller than 768px (smartphones), the widget automatically switches to an optimized single-page portrait layout with full touch gestures, safe-area inset protection, and compact glass controls.*
-
-**Q: Can links or attachments be clicked without turning the page?**  
-*A: Yes. The underlying engine is configured with `disableFlipByClick: true`. Page turning is strictly reserved for deliberate corner drags, horizontal swipe gestures, and toolbar arrows, preventing accidental flips when interacting with links, buttons, or text.*
-
----
-
-## 9. Support & Issues
-
-* **Issues & Bug Reports:** [GitHub Issues](https://github.com/ctrlaltvikas/Mendix-Vikflip/issues)
-* **Customer Support Email:** support@vikflip.com / vikasharry03@gmail.com
-* **Enterprise SLA:** Issues are tracked and addressed under standard enterprise response timelines. Mendix Marketplace content verification reports available upon request.
+| `Pages (Data Source)` | DataSource | Required | List of page records (`PublicationPage` entity) |
+| `Page Image` | Image | Optional | High-resolution background raster or scanned folio |
+| `Page Number` | Integer | Required | 1-based page index for ordering and folios |
+| `Chapter Title` | String | Optional | Running header text displayed in top chrome |
+| `Page Density` | Enum | `Soft` | `Hard` (covers) or `Soft` (interior pages) |
+| `Initial Theme` | Enum | `Sepia` | `Light`, `Sepia`, or `Dark` |
+| `Initial Mode` | Enum | `Horizontal`| `Horizontal` (3D flipbook) or `Vertical` (continuous scroll) |
+| `Auto-Hide Toolbar` | Boolean | `true` | Hides floating chrome after 4 seconds of reading inactivity |
+| `Show Thumbnail Drawer`| Boolean | `true` | Enables bottom filmstrip drawer navigator |
+| `Sound Enabled` | Boolean | `true` | Synthesizes realistic paper rustle on turn |
+| `On Page Change` | Action | Optional | Microflow / Nanoflow triggered on page navigation |
+| `On Attachment Click` | Action | Optional | Microflow triggered when a user downloads an attachment |
