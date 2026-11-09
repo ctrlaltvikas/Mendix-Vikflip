@@ -146,6 +146,16 @@
   transition: background-color 0.4s ease, color 0.4s ease;
 }
 
+.vikflip-page.page-front-cover {
+  background: linear-gradient(135deg, #1C2430 0%, #0F141C 100%) !important;
+  color: #FFFFFF !important;
+}
+
+.vikflip-page.page-back-cover {
+  background: linear-gradient(135deg, #151922 0%, #0D1017 100%) !important;
+  color: #FFFFFF !important;
+}
+
 .vikflip-page[data-density="hard"] {
   border-radius: 4px;
 }
@@ -207,7 +217,7 @@
   flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 10px;
   min-height: 0;
 }
 
@@ -279,9 +289,9 @@
 .page-paragraphs {
   display: flex;
   flex-direction: column;
-  gap: 12px;
-  font-size: 13px;
-  line-height: 1.65;
+  gap: 8px;
+  font-size: 12.5px;
+  line-height: 1.55;
   color: var(--text-secondary);
 }
 
@@ -379,8 +389,8 @@
 
 /* Quote Box */
 .page-quote-box {
-  margin: auto 0 4px;
-  padding: 12px 16px;
+  margin: auto 0 2px;
+  padding: 8px 14px;
   border-left: 3px solid var(--accent);
   background: rgba(0, 0, 0, 0.02);
   border-radius: 0 8px 8px 0;

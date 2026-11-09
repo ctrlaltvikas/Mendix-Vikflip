@@ -12,13 +12,17 @@ interface AppleBooksFlipbookProps {
   initialTheme?: ThemeMode;
   initialReadingMode?: ReadingMode;
   initialMuted?: boolean;
+  initialPage?: number;
+  initialDrawerOpen?: boolean;
 }
 
 export const AppleBooksFlipbook: React.FC<AppleBooksFlipbookProps> = ({
   pages = SAMPLE_REPORT,
   initialTheme = 'sepia',
   initialReadingMode = 'horizontal',
-  initialMuted = false
+  initialMuted = false,
+  initialPage = 0,
+  initialDrawerOpen = false
 }) => {
   const flipBookRef = useRef<any>(null);
   const containerRef = useRef<HTMLDivElement | null>(null);
@@ -26,11 +30,11 @@ export const AppleBooksFlipbook: React.FC<AppleBooksFlipbookProps> = ({
   const verticalCardsRef = useRef<{ [key: number]: HTMLDivElement | null }>({});
 
   // Core State
-  const [currentPage, setCurrentPage] = useState<number>(0);
+  const [currentPage, setCurrentPage] = useState<number>(initialPage);
   const [theme, setTheme] = useState<ThemeMode>(initialTheme);
   const [readingMode, setReadingMode] = useState<ReadingMode>(initialReadingMode);
   const [isMuted, setIsMuted] = useState<boolean>(initialMuted);
-  const [isDrawerOpen, setIsDrawerOpen] = useState<boolean>(false);
+  const [isDrawerOpen, setIsDrawerOpen] = useState<boolean>(initialDrawerOpen);
   const [isChromeVisible, setIsChromeVisible] = useState<boolean>(true);
   const [isFullscreen, setIsFullscreen] = useState<boolean>(false);
   const [isMounted, setIsMounted] = useState<boolean>(false);

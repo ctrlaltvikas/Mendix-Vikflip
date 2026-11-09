@@ -63,7 +63,28 @@ export const PageContent = forwardRef<HTMLDivElement, PageContentProps>(({
           </div>
 
           <div style={{ margin: 'auto 0', padding: '0 10px' }}>
-            <div style={{ width: '52px', height: '2px', background: 'linear-gradient(90deg, #F59E0B, #E2E8F0)', margin: '0 auto 24px' }}></div>
+            {/* Prominent VIK Monogram Badge */}
+            <div
+              style={{
+                width: '54px',
+                height: '54px',
+                borderRadius: '16px',
+                background: 'linear-gradient(135deg, #F59E0B 0%, #D97706 100%)',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                margin: '0 auto 16px',
+                boxShadow: '0 8px 24px rgba(245, 158, 11, 0.4)',
+                color: '#FFFFFF',
+                fontWeight: 900,
+                fontSize: '20px',
+                letterSpacing: '0.06em',
+                fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif'
+              }}
+            >
+              VIK
+            </div>
+            <div style={{ width: '52px', height: '2px', background: 'linear-gradient(90deg, #F59E0B, #E2E8F0)', margin: '0 auto 20px' }}></div>
             <h1 style={{ fontSize: 'clamp(26px, 3.8vw, 36px)', fontWeight: 800, letterSpacing: '-0.03em', lineHeight: 1.18, marginBottom: '16px', color: '#FFFFFF' }}>
               {page.title}
             </h1>
